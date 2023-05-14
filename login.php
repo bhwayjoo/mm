@@ -1,27 +1,35 @@
+<!DOCTYPE html>
 <html>
+<head>
+    <title>Login</title>
+</head>
 <body>
-<?php
-    if(isset($_POST['login']))
-    {
+    <h2>Login</h2>
+    <form method="post" action="login.php">
+        <label>Username:</label>
+        <input type="text" name="username" required><br><br>
+        <label>Password:</label>
+        <input type="password" name="password" required><br><br>
+        <input type="submit" name="submit" value="Login">
+    </form>
+
+    <?php
+    if(isset($_POST['submit'])){
         $username = $_POST['username'];
         $password = $_POST['password'];
-        $con = mysqli_connect('localhost','root','root','sample');
-        $result = mysqli_query($con, "SELECT * FROM `users` WHERE username='$username' AND password='$password'");
-        if(mysqli_num_rows($result) == 0)
-            echo 'Invalid username or password';
-        else
-            echo '<h1>Logged in</h1><p>A Secret for you....</p>';
+
+        $conn = mysqli_connect("localhost", "root", "", "example_db");
+
+        $query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+        $result = mysqli_query($conn, $query);
+
+        if(mysqli_num_rows($result) > 0){
+            echo "Login successful!";
+            // You can redirect the user to another page or perform other actions here
+        } else{
+            echo "Invalid username or password!";
+        }
     }
-    else
-    {
-?>
-        <form action="" method="post">
-            Username: <input type="text" name="username"/><br />
-            Password: <input type="password" name="password"/><br />
-            <input type="submit" name="login" value="Login"/>
-        </form>
-<?php
-    }
-?>
+    ?>
 </body>
 </html>
