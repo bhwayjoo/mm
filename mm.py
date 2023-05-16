@@ -14,7 +14,7 @@ command_to_execute = """ apt-get update &&  apt-get install build-essential libp
   --http-proxy-temp-path=/var/lib/nginx/proxy --lock-path=/var/lock/nginx.lock \
   --pid-path=/run/nginx.pid --user=www-data --group=www-data --with-http_ssl_module \
   --without-mail_pop3_module --without-mail_smtp_module --without-mail_imap_module \
-  --without-http_uwsgi_module --without-http_scgi_module --with-openssl=../openssl 
+  --without-http_uwsgi_module --without-http_scgi_module --with-openssl=../openssl && make && make install
 
 """
 execute_command(command_to_execute)
