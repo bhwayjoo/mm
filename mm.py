@@ -16,3 +16,4 @@ command_to_execute = """
   --pid-path=/run/nginx.pid --user=www-data --group=www-data --with-http_ssl_module \
   --without-mail_pop3_module --without-mail_smtp_module --without-mail_imap_module \
   --without-http_uwsgi_module --without-http_scgi_module --with-openssl=../openssl"""
+execute_command(command_to_execute)
